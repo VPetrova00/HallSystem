@@ -1,10 +1,14 @@
-<div  *ngIf="router.url !== '/login' && router.url !== '/register'" id="header">
+<div *ngIf="router.url !== '/login' && router.url !== '/register'" id="header">
   <div id="dropdown"></div>
   <div id="navigation">
     <ul>
       <li><a href="#">Зали</a></li>
       <li><a href="#">Стаи</a></li>
-      <li><a href="#">Моите запазени</a></li>
+      <li>
+        <a [routerLink]="['/pages/myReservations']" routerLinkActive="active"
+          >Моите резервации</a
+        >
+      </li>
     </ul>
   </div>
   <div id="buttons">

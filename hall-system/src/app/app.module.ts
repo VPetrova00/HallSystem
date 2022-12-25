@@ -12,6 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { HomePageComponent } from './components/pages/home-page/home-page.component';
+import { MyReservationsComponent } from './components/my-reservations/my-reservations.component';
+import {MatTableModule} from '@angular/material/table'
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { HomePageComponent } from './components/pages/home-page/home-page.compon
     HeaderComponent,
     RegisterComponent,
     LoginComponent,
-    HomePageComponent
+    HomePageComponent,
+    MyReservationsComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +33,7 @@ import { HomePageComponent } from './components/pages/home-page/home-page.compon
     ReactiveFormsModule,
     MatButtonModule,
     MatInputModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
