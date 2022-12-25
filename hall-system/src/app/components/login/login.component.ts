@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
     if (!this.loginForm.valid) {
       return;
     }
+    this.router.navigate(['./pages/homePage'])
   }
 
   ngOnInit(): void {
