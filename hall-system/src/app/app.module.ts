@@ -14,6 +14,7 @@ import {MatInputModule} from '@angular/material/input';
 import { HomePageComponent } from './components/pages/home-page/home-page.component';
 import { MyReservationsComponent } from './components/my-reservations/my-reservations.component';
 import {MatTableModule} from '@angular/material/table'
+import {AdditionalInfoComponent} from "./components/additional-info/additional-info.component";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {MatTableModule} from '@angular/material/table'
     RegisterComponent,
     LoginComponent,
     HomePageComponent,
-    MyReservationsComponent
+    MyReservationsComponent,
+    AdditionalInfoComponent,
   ],
   imports: [
     BrowserModule,
