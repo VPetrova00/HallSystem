@@ -1,0 +1,16 @@
+<table mat-table [dataSource]="details" class="mat-elevation-z8">
+  <ng-container matColumnDef="computer_hall">
+    <th mat-header-cell *matHeaderCellDef>Компютърна зала</th>
+    <td mat-cell *matCellDef="let element">{{ element.computer_hall }}</td>
+  </ng-container>
+  <ng-container matColumnDef="projector">
+    <th mat-header-cell *matHeaderCellDef>Проектор</th>
+    <td mat-cell *matCellDef="let element">{{ element.projector }}</td>
+  </ng-container>
+  <ng-container matColumnDef="capacity">
+    <th mat-header-cell *matHeaderCellDef>Капацитет</th>
+    <td mat-cell *matCellDef="let element">{{ element.capacity }}</td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: tableColumns"></tr>
+</table>
