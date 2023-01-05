@@ -10,5 +10,5 @@ import java.util.Set;
 public interface HallRepository extends CrudRepository<Hall, Long> {
     Set<Hall> findAll();
 
-
+    Hall findHallById(Long id);
 }

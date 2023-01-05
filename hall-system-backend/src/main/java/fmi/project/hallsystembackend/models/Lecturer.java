@@ -73,4 +73,8 @@ public class Lecturer {
     public void setReservedHalls(Set<Hall> reservedHalls) {
         this.reservedHalls = reservedHalls;
     }
+
+    public void addReservedHall(Hall hall) {
+        this.reservedHalls.add(hall);
+    }
 }

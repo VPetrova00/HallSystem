@@ -1,5 +1,7 @@
 package fmi.project.hallsystembackend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.*;
 
@@ -31,6 +33,7 @@ public class Hall {
     private List<Date> reservedIntervals;
 
     @ManyToMany(mappedBy = "reservedHalls")
+    @JsonIgnore
     private Set<Lecturer> lecturers;
 
     public Hall() {
