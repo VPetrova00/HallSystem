@@ -1,5 +1,7 @@
 package fmi.project.hallsystembackend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.*;
 
@@ -28,25 +30,24 @@ public class Hall {
 
     @Column
     @ElementCollection
-    private List<Date> reservedIntervals;
+    private Set<Integer> reservedIntervals;
 
     @ManyToMany(mappedBy = "reservedHalls")
+    @JsonIgnore
     private Set<Lecturer> lecturers;
 
     public Hall() {
-        this.reservedIntervals = new ArrayList<>();
+        this.reservedIntervals = new HashSet<>();
         this.lecturers = new HashSet<>();
     }
 
-    public Hall(Long id, int hallNumber, String facultyName, int capacity, boolean isComputerHall, boolean hasProjector, List<Date> reservedIntervals, Set<Lecturer> lecturers) {
+    public Hall(Long id, int hallNumber, String facultyName, int capacity, boolean isComputerHall, boolean hasProjector) {
         this.id = id;
         this.hallNumber = hallNumber;
         this.facultyName = facultyName;
         this.capacity = capacity;
         this.isComputerHall = isComputerHall;
         this.hasProjector = hasProjector;
-        this.reservedIntervals = reservedIntervals;
-        this.lecturers = lecturers;
     }
 
     public Long getId() {
@@ -97,19 +98,15 @@ public class Hall {
         this.hasProjector = hasProjector;
     }
 
-    public List<Date> getReservedIntervals() {
+    public Set<Integer> getReservedIntervals() {
         return reservedIntervals;
-    }
-
-    public void setReservedIntervals(List<Date> reservedIntervals) {
-        this.reservedIntervals = reservedIntervals;
     }
 
     public Set<Lecturer> getLecturers() {
         return lecturers;
     }
 
-    public void setLecturers(Set<Lecturer> lecturers) {
-        this.lecturers = lecturers;
+    public void reserveInterval(Integer from) {
+        this.reservedIntervals.add(from);
     }
 }
