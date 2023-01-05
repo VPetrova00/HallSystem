@@ -24,8 +24,8 @@ public class LecturerController {
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
-    @PostMapping("/{lecturerId}/reserve/{hallId}")
-    public void reserveHall(@PathVariable Long lecturerId, @PathVariable Long hallId) {
-        this.lecturerService.reserveHall(lecturerId, hallId);
+    @PostMapping("/{lecturerId}/reserve/{hallId}/{fromHour}")
+    public void reserveHall(@PathVariable Long lecturerId, @PathVariable Long hallId, @PathVariable int fromHour) {
+        this.lecturerService.reserveHall(lecturerId, hallId, fromHour);
     }
 }

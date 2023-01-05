@@ -21,11 +21,13 @@ public class LecturerServiceImpl implements LecturerService {
     }
 
     @Override
-    public void reserveHall(Long lecturerId, Long hallId) {
+    public void reserveHall(Long lecturerId, Long hallId, int fromHour) {
         Hall hallToReserve = this.hallRepository.findHallById(hallId);
+        hallToReserve.reserveInterval(fromHour);
         Optional<Lecturer> lecturer = this.lecturerRepository.findById(lecturerId);
 
         lecturer.ifPresent(value -> value.addReservedHall(hallToReserve));
+        this.hallRepository.save(hallToReserve);
         lecturer.ifPresent(this.lecturerRepository::save);
     }
 }
