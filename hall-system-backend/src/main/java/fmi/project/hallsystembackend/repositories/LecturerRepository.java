@@ -7,5 +7,6 @@ import java.util.List;
 
 @Repository
 public interface LecturerRepository extends CrudRepository<Lecturer, Long> {
+    Lecturer findLecturerByName(String name);
     List<Lecturer> findAll();
 }
