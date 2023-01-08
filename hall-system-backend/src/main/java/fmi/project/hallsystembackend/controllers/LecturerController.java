@@ -1,8 +1,5 @@
 package fmi.project.hallsystembackend.controllers;
 
-import fmi.project.hallsystembackend.models.Hall;
-import fmi.project.hallsystembackend.repositories.HallRepository;
-import fmi.project.hallsystembackend.repositories.LecturerRepository;
 import fmi.project.hallsystembackend.services.LecturerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,16 +7,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/lecturer")
 public class LecturerController {
-    private final HallRepository hallRepository;
-
-    private final LecturerRepository lecturerRepository;
 
     private final LecturerService lecturerService;
 
     @Autowired
-    public LecturerController(HallRepository hallRepository, LecturerRepository lecturerRepository, LecturerService lecturerService) {
-        this.hallRepository = hallRepository;
-        this.lecturerRepository = lecturerRepository;
+    public LecturerController(LecturerService lecturerService) {
         this.lecturerService = lecturerService;
     }
 
