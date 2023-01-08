@@ -30,4 +30,9 @@ public class LecturerServiceImpl implements LecturerService {
         this.hallRepository.save(hallToReserve);
         lecturer.ifPresent(this.lecturerRepository::save);
     }
+
+    @Override
+    public Lecturer findLecturerByName(String name) {
+        return this.lecturerRepository.findLecturerByName(name);
+    }
 }

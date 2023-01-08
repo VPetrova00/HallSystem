@@ -1,6 +1,6 @@
 package fmi.project.hallsystembackend.controllers;
 
-import fmi.project.hallsystembackend.models.Hall;
+import fmi.project.hallsystembackend.models.Lecturer;
 import fmi.project.hallsystembackend.repositories.HallRepository;
 import fmi.project.hallsystembackend.repositories.LecturerRepository;
 import fmi.project.hallsystembackend.services.LecturerService;
@@ -28,4 +28,10 @@ public class LecturerController {
     public void reserveHall(@PathVariable Long lecturerId, @PathVariable Long hallId, @PathVariable int fromHour) {
         this.lecturerService.reserveHall(lecturerId, hallId, fromHour);
     }
+
+    @GetMapping("/{name}")
+    public Lecturer getLecturerByName(@PathVariable String name) {
+        return this.lecturerService.findLecturerByName(name);
+    }
+
 }
