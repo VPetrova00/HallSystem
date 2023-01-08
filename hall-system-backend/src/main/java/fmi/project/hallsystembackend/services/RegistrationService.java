@@ -1,5 +1,8 @@
 package fmi.project.hallsystembackend.services;
 
-public interface RegistrationService {
+import fmi.project.hallsystembackend.models.Lecturer;
+import fmi.project.hallsystembackend.models.Status;
 
+public interface RegistrationService {
+    Status register(Lecturer newLecturer);
 }

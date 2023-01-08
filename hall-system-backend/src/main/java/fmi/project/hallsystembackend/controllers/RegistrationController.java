@@ -12,28 +12,16 @@ import java.util.List;
 @RestController
 @RequestMapping("/registration")
 public class RegistrationController {
-
-    private final LecturerRepository lecturerRepository;
     private final RegistrationService registrationService;
 
     @Autowired
-    public RegistrationController(LecturerRepository lecturerRepository, RegistrationService registrationService) {
-        this.lecturerRepository = lecturerRepository;
+    public RegistrationController(RegistrationService registrationService) {
         this.registrationService = registrationService;
     }
 
     @PostMapping("/lecturer/register")
     public Status registerLecturer(@Valid @RequestBody Lecturer newLecturer) {
-        List<Lecturer> lecturers = lecturerRepository.findAll();
-        System.out.println("New lecturer: " + newLecturer.toString());
-        for (Lecturer lecturer : lecturers) {
-            System.out.println("Registered lecturer: " + newLecturer.getName());
-            if (lecturer.equals(newLecturer)) {
-                System.out.println("Lecturer already exists!");
-                return Status.LECTURER_ALREADY_EXISTS;
-            }
-        }
-        lecturerRepository.save(newLecturer);
-        return Status.SUCCESS;
+        Status status = this.registrationService.register(newLecturer);
+        return status;
     }
 }
