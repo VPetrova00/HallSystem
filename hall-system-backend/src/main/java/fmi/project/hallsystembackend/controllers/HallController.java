@@ -13,14 +13,10 @@ import java.util.Set;
 @RequestMapping("/hall")
 public class HallController {
     private final HallService hallService;
-    private final HallRepository hallRepository;
-    private final LecturerRepository lecturerRepository;
 
     @Autowired
-    public HallController(HallService hallService, HallRepository hallRepository, LecturerRepository lecturerRepository) {
+    public HallController(HallService hallService) {
         this.hallService = hallService;
-        this.hallRepository = hallRepository;
-        this.lecturerRepository = lecturerRepository;
     }
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/all")

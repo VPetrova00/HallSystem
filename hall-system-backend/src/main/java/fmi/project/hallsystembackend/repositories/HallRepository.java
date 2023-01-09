@@ -21,6 +21,5 @@ public interface HallRepository extends CrudRepository<Hall, Long> {
                     "WHERE lecturers.name = :lecturer",
             nativeQuery=true
     )
-
     Set<Hall> getReservedHalls(@Param("lecturer") String lecturer);
 }
