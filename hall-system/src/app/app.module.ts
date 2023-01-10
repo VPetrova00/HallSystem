@@ -6,15 +6,16 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 import { HomePageComponent } from './components/pages/home-page/home-page.component';
 import { MyReservationsComponent } from './components/my-reservations/my-reservations.component';
-import {MatTableModule} from '@angular/material/table'
-import {AdditionalInfoComponent} from "./components/additional-info/additional-info.component";
+import { MatTableModule } from '@angular/material/table';
+import { AdditionalInfoComponent } from './components/additional-info/additional-info.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -35,9 +36,10 @@ import {AdditionalInfoComponent} from "./components/additional-info/additional-i
     ReactiveFormsModule,
     MatButtonModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
