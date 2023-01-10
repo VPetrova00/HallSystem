@@ -1,5 +1,5 @@
 export interface IHallInfo {
-  number: number;
-  photo: string;
-  // more info
+  id: number;
+  hallNumber: number;
+  facultyName: string;
 }

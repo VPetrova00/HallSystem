@@ -29,6 +29,7 @@ public class HallController {
         return this.hallService.findHallById(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/lecturer/{name}")
     public Set<Hall> getReservedHalls(@PathVariable String name) {
         return this.hallService.getReservedHalls(name);

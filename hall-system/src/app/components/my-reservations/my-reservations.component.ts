@@ -1,6 +1,7 @@
 import { IHallInfo } from './../../interfaces/IHallInfo';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MyReservationsService } from 'src/app/services/my-reservations.service';
 
 @Component({
   selector: 'app-my-reservations',
@@ -8,10 +9,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./my-reservations.component.scss'],
 })
 export class MyReservationsComponent implements OnInit {
-  displayedColumns: string[] = ['number', 'photo', 'actions'];
+  displayedColumns: string[] = ['hallNumber', 'facultyName', 'actions'];
   dataSource!: IHallInfo[];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private service: MyReservationsService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let storageData = JSON.parse(localStorage.getItem('lecturer') || '{}').lecturer;
+    // if (!storageData) {
+    //   this.router.navigate(['/login']);
+    // }
+    this.service.getReservations(storageData).subscribe((data) => {
+      this.dataSource = data;
+    });
+  }
 }
