@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import fmi.project.hallsystembackend.models.Hall;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 
@@ -39,7 +40,7 @@ public class HallController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/freeIntervals/hall/{id}")
-    public Set<Integer> getFreeIntervals(@PathVariable Long id, @RequestParam(name = "date") @DateTimeFormat(pattern = "dd.MM.yyyy") Date date) {
+    public Set<Integer> getFreeIntervals(@PathVariable Long id, @RequestParam(name = "date") @DateTimeFormat(pattern = "dd.MM.yyyy") LocalDate date) {
         return this.hallService.getFreeIntervals(id, date);
     }
 }

@@ -6,6 +6,7 @@ import fmi.project.hallsystembackend.repositories.HallRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
@@ -40,7 +41,7 @@ public class HallServiceImpl implements HallService {
     }
 
     @Override
-    public Set<Integer> getFreeIntervals(Long id, Date date) {
+    public Set<Integer> getFreeIntervals(Long id, LocalDate date) {
         Hall hall = this.findHallById(id);
         Set<ReservationData> reservationData = hall.getReservationData().stream().filter(r -> r.getReservedDate() != date).collect(Collectors.toSet());
 
