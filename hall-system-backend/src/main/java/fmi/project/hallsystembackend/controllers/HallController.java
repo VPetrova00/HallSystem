@@ -1,5 +1,6 @@
 package fmi.project.hallsystembackend.controllers;
 
+import fmi.project.hallsystembackend.models.ResponseModel;
 import fmi.project.hallsystembackend.services.HallService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -8,6 +9,7 @@ import fmi.project.hallsystembackend.models.Hall;
 
 import java.util.Date;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/halls")
@@ -33,8 +35,11 @@ public class HallController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/lecturer/{name}/reservedHalls")
-    public Set<Object[]> getReservedHalls(@PathVariable String name) {
-        return this.hallService.getReservedHalls(name);
+    @ResponseBody
+    public Set<Object> getReservedHalls(@PathVariable String name) {
+        Set<Object[]> reservedHalls = this.hallService.getReservedHalls(name);
+
+        return reservedHalls.stream().map(ResponseModel::new).collect(Collectors.toSet());
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
