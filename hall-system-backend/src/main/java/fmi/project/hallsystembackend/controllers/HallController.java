@@ -18,22 +18,26 @@ public class HallController {
     public HallController(HallService hallService) {
         this.hallService = hallService;
     }
+
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/all")
     public Set<Hall> getAllHalls() {
         return this.hallService.findAllHalls();
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/{id}")
     public Hall getHallById(@PathVariable Long id) {
         return this.hallService.findHallById(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/lecturer/{name}/reservedHalls")
     public Set<Object[]> getReservedHalls(@PathVariable String name) {
         return this.hallService.getReservedHalls(name);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/freeIntervals/hall/{id}")
     public Set<Integer> getFreeIntervals(@PathVariable Long id, @RequestParam(name = "date") @DateTimeFormat(pattern = "dd.MM.yyyy") Date date) {
         return this.hallService.getFreeIntervals(id, date);

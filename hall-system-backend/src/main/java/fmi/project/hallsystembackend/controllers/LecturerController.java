@@ -26,11 +26,13 @@ public class LecturerController {
         this.lecturerService.reserveHall(lecturerId, hallId, fromHour, reservationDate);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/{name}")
     public Lecturer getLecturerByName(@PathVariable String name) {
         return this.lecturerService.findLecturerByName(name);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/")
     public Set<Lecturer> getAllLecturers() {
         return this.lecturerService.findAllLecturers();
