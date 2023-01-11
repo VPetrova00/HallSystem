@@ -1,13 +1,16 @@
 package fmi.project.hallsystembackend.services;
 
 import fmi.project.hallsystembackend.models.Hall;
+import fmi.project.hallsystembackend.models.ReservationData;
 import fmi.project.hallsystembackend.repositories.HallRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class HallServiceImpl implements HallService {
@@ -32,17 +35,17 @@ public class HallServiceImpl implements HallService {
     }
 
     @Override
-    public Set<Hall> getReservedHalls(String name) {
+    public Set<Object[]> getReservedHalls(String name) {
         return this.hallRepository.getReservedHalls(name);
     }
 
     @Override
-    public Set<Integer> getFreeIntervals(Long id) {
+    public Set<Integer> getFreeIntervals(Long id, Date date) {
         Hall hall = this.findHallById(id);
-        Set<Integer> reservedIntervals = hall.getReservedIntervals();
+        Set<ReservationData> reservationData = hall.getReservationData().stream().filter(r -> r.getReservedDate() != date).collect(Collectors.toSet());
 
-        for (int interval : reservedIntervals) {
-            intervals.remove(interval);
+        for (ReservationData row : reservationData) {
+            intervals.remove(row.getReservedHour());
         }
 
         return intervals;

@@ -19,6 +19,7 @@ public class RegistrationController {
         this.registrationService = registrationService;
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/lecturer/register")
     public Status registerLecturer(@Valid @RequestBody Lecturer newLecturer) {
         Status status = this.registrationService.register(newLecturer);
