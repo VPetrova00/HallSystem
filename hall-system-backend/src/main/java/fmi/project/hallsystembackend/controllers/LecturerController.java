@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 
@@ -22,7 +23,7 @@ public class LecturerController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/{lecturerId}/reserve/{hallId}/{fromHour}")
-    public void reserveHall(@PathVariable Long lecturerId, @PathVariable Long hallId, @PathVariable int fromHour, @RequestParam(name = "reservationDate") @DateTimeFormat(pattern = "dd.MM.yyyy") Date reservationDate) {
+    public void reserveHall(@PathVariable Long lecturerId, @PathVariable Long hallId, @PathVariable int fromHour, @RequestParam(name = "reservationDate") @DateTimeFormat(pattern = "dd.MM.yyyy") LocalDate reservationDate) {
         this.lecturerService.reserveHall(lecturerId, hallId, fromHour, reservationDate);
     }
 

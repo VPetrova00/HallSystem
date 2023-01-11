@@ -1,6 +1,7 @@
 package fmi.project.hallsystembackend.models;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -14,7 +15,7 @@ public class ReservationData {
     private Integer reservedHour;
 
     @Column(nullable = false)
-    private Date reservedDate;
+    private LocalDate reservedDate;
 
     @ManyToOne
     @JoinColumn(name = "lecturer_id", nullable = false)
@@ -29,14 +30,14 @@ public class ReservationData {
         this.reservedHall = new Hall();
     }
 
-    public ReservationData(Integer reservedHour, Date reservedDate, Lecturer reservedBy, Hall reservedHall) {
+    public ReservationData(Integer reservedHour, LocalDate reservedDate, Lecturer reservedBy, Hall reservedHall) {
         this.reservedHour = reservedHour;
         this.reservedDate = reservedDate;
         this.reservedBy = reservedBy;
         this.reservedHall = reservedHall;
     }
 
-    public ReservationData(Long id, Integer reservedHour, Date reservedDate, Lecturer reservedBy, Hall reservedHall) {
+    public ReservationData(Long id, Integer reservedHour, LocalDate reservedDate, Lecturer reservedBy, Hall reservedHall) {
         this.id = id;
         this.reservedHour = reservedHour;
         this.reservedDate = reservedDate;
@@ -52,11 +53,11 @@ public class ReservationData {
         this.reservedHour = reservedHour;
     }
 
-    public Date getReservedDate() {
+    public LocalDate getReservedDate() {
         return this.reservedDate;
     }
 
-    public void setReservedDate(Date reservedDate) {
+    public void setReservedDate(LocalDate reservedDate) {
         this.reservedDate = reservedDate;
     }
 

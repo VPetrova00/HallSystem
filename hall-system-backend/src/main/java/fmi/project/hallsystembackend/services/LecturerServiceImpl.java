@@ -9,6 +9,7 @@ import fmi.project.hallsystembackend.repositories.ReservationDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Optional;
 import java.util.Set;
@@ -28,7 +29,7 @@ public class LecturerServiceImpl implements LecturerService {
     }
 
     @Override
-    public void reserveHall(Long lecturerId, Long hallId, int fromHour, Date reservationDate) {
+    public void reserveHall(Long lecturerId, Long hallId, int fromHour, LocalDate reservationDate) {
         Hall hallToReserve = this.hallRepository.findHallById(hallId);
         Optional<Lecturer> lecturer = this.lecturerRepository.findById(lecturerId);
 
