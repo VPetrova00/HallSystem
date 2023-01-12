@@ -11,7 +11,7 @@ export class MyReservationsService {
 
   getReservations(name: string): Observable<IHallInfo[]> {
     return this.http.get<IHallInfo[]>(
-      'http://localhost:8080/halls/lecturer/' + 'Ivan' + '/reservedHalls'
+      'http://localhost:8080/halls/lecturer/' + name + '/reservedHalls'
     );
   }
 }
