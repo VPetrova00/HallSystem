@@ -21,13 +21,13 @@ export class MyReservationsComponent implements OnInit {
   constructor(private router: Router, private service: MyReservationsService) {}
 
   ngOnInit(): void {
-    // let storageData = JSON.parse(
-    //   localStorage.getItem('lecturer') || '{}'
-    // ).lecturer;
+    let storageData = JSON.parse(
+      localStorage.getItem('lecturer') || '{}'
+    ).lecturer;
     // if (!storageData) {
     //   this.router.navigate(['/login']);
     // }
-    this.service.getReservations('').subscribe((data) => {
+    this.service.getReservations(storageData).subscribe((data) => {
       this.dataSource = data;
     });
   }
