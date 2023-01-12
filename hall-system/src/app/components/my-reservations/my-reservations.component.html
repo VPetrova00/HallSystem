@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource">
   <ng-container matColumnDef="hallNumber">
     <th mat-header-cell *matHeaderCellDef id="hallNum">Номер на зала</th>
     <td mat-cell *matCellDef="let element">{{ element.hallNumber }}</td>
@@ -6,6 +6,18 @@
   <ng-container matColumnDef="facultyName">
     <th mat-header-cell *matHeaderCellDef>Факултет</th>
     <td mat-cell *matCellDef="let element">{{ element.facultyName }}</td>
+  </ng-container>
+  <ng-container matColumnDef="reservedDate">
+    <th mat-header-cell *matHeaderCellDef>Дата на резервиране</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.reservedDate | date : "dd.MM.yyyy" }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="reservedHour">
+    <th mat-header-cell *matHeaderCellDef>Час на резервиране</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.reservedHour + ":00" }}
+    </td>
   </ng-container>
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef id="actions">Действия</th>

@@ -9,17 +9,25 @@ import { MyReservationsService } from 'src/app/services/my-reservations.service'
   styleUrls: ['./my-reservations.component.scss'],
 })
 export class MyReservationsComponent implements OnInit {
-  displayedColumns: string[] = ['hallNumber', 'facultyName', 'actions'];
+  displayedColumns: string[] = [
+    'hallNumber',
+    'facultyName',
+    'reservedDate',
+    'reservedHour',
+    'actions',
+  ];
   dataSource!: IHallInfo[];
 
   constructor(private router: Router, private service: MyReservationsService) {}
 
   ngOnInit(): void {
-    let storageData = JSON.parse(localStorage.getItem('lecturer') || '{}').lecturer;
+    // let storageData = JSON.parse(
+    //   localStorage.getItem('lecturer') || '{}'
+    // ).lecturer;
     // if (!storageData) {
     //   this.router.navigate(['/login']);
     // }
-    this.service.getReservations(storageData).subscribe((data) => {
+    this.service.getReservations('').subscribe((data) => {
       this.dataSource = data;
     });
   }
