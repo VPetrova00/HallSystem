@@ -28,6 +28,12 @@ public class LecturerController {
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
+    @DeleteMapping("/{lecturerId}/deleteReservation/{hallId}")
+    public void deleteHallReservation(@PathVariable Long lecturerId, @PathVariable Long hallId, @RequestParam(name = "reservedHour") Integer reservedHour, @RequestParam(name = "reservedDate") @DateTimeFormat(pattern = "dd.MM.yyyy") LocalDate reservedDate) {
+        this.lecturerService.deleteHallReservation(lecturerId, hallId, reservedHour, reservedDate);
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/{name}")
     public Lecturer getLecturerByName(@PathVariable String name) {
         return this.lecturerService.findLecturerByName(name);

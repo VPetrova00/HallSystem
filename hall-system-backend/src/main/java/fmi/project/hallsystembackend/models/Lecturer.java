@@ -76,4 +76,6 @@ public class Lecturer {
     public void addReservationData(ReservationData reservationData) {
         this.reservationData.add(reservationData);
     }
+
+    public void deleteReservationData(ReservationData reservationData) { this.reservationData.remove(reservationData); }
 }
