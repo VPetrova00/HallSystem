@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
-import { IDetails } from "../../interfaces/IDetails";
+import {Component, Input, OnInit} from "@angular/core";
+import {HallsService} from "../../services/halls.service";
+import {IHall} from "../../interfaces/IHall";
 
 @Component({
   selector: 'additional-info',
@@ -7,19 +8,15 @@ import { IDetails } from "../../interfaces/IDetails";
   styleUrls: ['additional-info.component.scss']
 })
 export class AdditionalInfoComponent implements OnInit {
-  tableColumns: string[] = ['computer_hall', 'projector', 'capacity'];
+  @Input() id!: number;
+  details!: IHall;
 
-  //test object
-  row: IDetails = {
-    computer_hall: "не",
-    projector: "да",
-    capacity: 100,
-  };
-  details: IDetails[] = [this.row];
-
-  constructor() {
+  constructor(private service: HallsService) {
   }
 
   ngOnInit(): void {
+    this.service.getDetailsForAHall(this.id).subscribe((details) => {
+      this.details = details;
+    });
   }
 }

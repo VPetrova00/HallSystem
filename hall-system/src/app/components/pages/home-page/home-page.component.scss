@@ -1,0 +1,55 @@
+#doorImage {
+  height: 5rem;
+  width: 5rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.block {
+  border: 2px solid cadetblue;
+  padding: 1rem;
+  margin: 1rem;
+  display: flex;
+
+  .details {
+    display: none;
+  }
+}
+
+.block:hover {
+  background: cadetblue;
+  border: 2px solid white;
+
+  li {
+    color: white;
+  }
+
+  .details {
+    display: flex;
+    justify-content: center;
+    background: white;
+
+    additional-info {
+      color: cadetblue;
+    }
+  }
+}
+
+.li-container {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+li {
+  list-style-type: none;
+  color: cadetblue;
+  font-weight: bold;
+}

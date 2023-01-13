@@ -1,8 +1,12 @@
-<p>home-page works!</p>
-
-<a [routerLink]="['../../login']">Go back to Login</a>
-<br>
-<a [routerLink]="['../../register']">Go back to Register</a>
-<br>
-<br>
-<!--<button mat-raised-button (click)="logout()">Logout</button>-->
+<div class="container">
+  <div *ngFor="let hall of hallInformation;" class="block">
+    <ul class="li-container">
+      <li><img src="../../../../assets/images/door.jpg" alt="img" id="doorImage"></li>
+      <li>{{hall.facultyName}}</li>
+      <li>{{hall.hallNumber}}</li>
+    </ul>
+    <div class="details">
+      <additional-info [id]="hall.id"></additional-info>
+    </div>
+  </div>
+</div>
