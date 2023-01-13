@@ -4,5 +4,5 @@ export interface IHall {
   facultyName: string;
   hallNumber: number;
   hasProjector: boolean;
-  isComputerHall: boolean;
+  computerHall: boolean;
 }

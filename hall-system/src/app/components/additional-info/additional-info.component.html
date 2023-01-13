@@ -1,9 +1,9 @@
-<ul>
+<ul *ngIf="details">
   Детайли:
   <li>
     Компютърна зала:
-    <span *ngIf="details.isComputerHall">да</span>
-    <span *ngIf="!details.isComputerHall">не</span>
+    <span *ngIf="details.computerHall">да</span>
+    <span *ngIf="!details.computerHall">не</span>
   </li>
   <li>
     Има наличен проектор:
