@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import fmi.project.hallsystembackend.models.Hall;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Set;
 import java.util.stream.Collectors;
 
