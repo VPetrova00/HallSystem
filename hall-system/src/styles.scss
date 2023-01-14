@@ -1,12 +1,15 @@
 body {
   margin: 0;
-  background-color: rgb(232, 248, 248);
+  background-color: rgb(232,248,248) !important;
 }
 
 html,
 body {
   height: 100%;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-2">
+    <h4>Резервиране на зала:</h4>
+  </div>
+  <div class="col-5">
+    <mat-form-field appearance="outline">
+      <mat-label>Номер на зала</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let hall of halls">
+          {{hall.hallNumber}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+
+<p>Изберете дата:</p>
+<input type="date">
+<p>От кога до кога?</p>
+

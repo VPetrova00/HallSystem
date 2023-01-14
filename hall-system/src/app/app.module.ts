@@ -15,6 +15,9 @@ import { HomePageComponent } from './components/pages/home-page/home-page.compon
 import { MyReservationsComponent } from './components/my-reservations/my-reservations.component';
 import {MatTableModule} from '@angular/material/table'
 import {AdditionalInfoComponent} from "./components/additional-info/additional-info.component";
+import { HallReservationComponent } from './components/hall-reservation/hall-reservation.component';
+import {MatSelectModule} from "@angular/material/select";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -25,18 +28,21 @@ import {AdditionalInfoComponent} from "./components/additional-info/additional-i
     HomePageComponent,
     MyReservationsComponent,
     AdditionalInfoComponent,
+    HallReservationComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatCardModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatInputModule,
-    MatTableModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MatCardModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatInputModule,
+        MatTableModule,
+        MatSelectModule,
+        HttpClientModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
