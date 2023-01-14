@@ -28,17 +28,12 @@ public class Hall {
     @Column
     private boolean hasProjector;
 
-    @Column
-    @ElementCollection
-    private Set<Integer> reservedIntervals;
-
-    @ManyToMany(mappedBy = "reservedHalls")
+    @OneToMany(mappedBy = "reservedHall")
     @JsonIgnore
-    private Set<Lecturer> lecturers;
+    private Set<ReservationData> reservationData;
 
     public Hall() {
-        this.reservedIntervals = new HashSet<>();
-        this.lecturers = new HashSet<>();
+        this.reservationData = new HashSet<>();
     }
 
     public Hall(Long id, int hallNumber, String facultyName, int capacity, boolean isComputerHall, boolean hasProjector) {
@@ -98,15 +93,13 @@ public class Hall {
         this.hasProjector = hasProjector;
     }
 
-    public Set<Integer> getReservedIntervals() {
-        return reservedIntervals;
+    public Set<ReservationData> getReservationData() {
+        return this.reservationData;
     }
 
-    public Set<Lecturer> getLecturers() {
-        return lecturers;
+    public void addReservationData(ReservationData reservationData) {
+        this.reservationData.add(reservationData);
     }
 
-    public void reserveInterval(Integer from) {
-        this.reservedIntervals.add(from);
-    }
+    public void deleteReservationData(ReservationData reservationData) { this.reservationData.remove(reservationData); }
 }

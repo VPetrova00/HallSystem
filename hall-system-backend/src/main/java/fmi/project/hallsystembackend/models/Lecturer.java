@@ -1,6 +1,9 @@
 package fmi.project.hallsystembackend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -10,7 +13,7 @@ public class Lecturer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
     @Column(nullable = false)
@@ -19,19 +22,19 @@ public class Lecturer {
     @Column(nullable = false)
     private String password;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "lecturers_halls", joinColumns = { @JoinColumn(name = "lecturer_id") },
-    inverseJoinColumns = { @JoinColumn(name = "hall_id") })
-    private Set<Hall> reservedHalls;
+    @OneToMany(mappedBy = "reservedBy")
+    @JsonIgnore
+    private Set<ReservationData> reservationData;
 
-    public Lecturer() {}
+    public Lecturer() {
+        this.reservationData = new HashSet<>();
+    }
 
-    public Lecturer(Long id, String name, String email, String password, Set<Hall> reservedHalls) {
+    public Lecturer(Long id, String name, String email, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
-        this.reservedHalls = reservedHalls;
     }
 
     public Long getId() {
@@ -66,15 +69,13 @@ public class Lecturer {
         this.password = password;
     }
 
-    public Set<Hall> getReservedHalls() {
-        return reservedHalls;
+    public Set<ReservationData> getReservationData() {
+        return this.reservationData;
     }
 
-    public void setReservedHalls(Set<Hall> reservedHalls) {
-        this.reservedHalls = reservedHalls;
+    public void addReservationData(ReservationData reservationData) {
+        this.reservationData.add(reservationData);
     }
 
-    public void addReservedHall(Hall hall) {
-        this.reservedHalls.add(hall);
-    }
+    public void deleteReservationData(ReservationData reservationData) { this.reservationData.remove(reservationData); }
 }
