@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {LoginService} from "../../services/login.service";
@@ -16,23 +16,25 @@ export class LoginComponent implements OnInit {
     password: new FormControl(null, [Validators.required]),
   });
 
-  constructor(private router: Router, private service: LoginService) {}
+  constructor(private router: Router, private service: LoginService) {
+  }
 
   login() {
     if (!this.loginForm.valid) {
       return;
     }
-    let lecturers:ILecturerDetails[];
+    let lecturers: ILecturerDetails[];
     this.service.getAllLecturers().subscribe((data) => {
       lecturers = data;
-    lecturers.forEach(({ email,password ,name}) => {
-     if (email == this.loginForm.controls['email'].value && password == this.loginForm.controls['password'].value) {
-       localStorage.setItem('lecturer', name);
-     } else {
-       return;
-     }
+      lecturers.forEach(({email, password, name}) => {
+        if (email == this.loginForm.controls['email'].value && password == this.loginForm.controls['password'].value) {
+          localStorage.setItem('lecturer', '{"lecturer":"' + name + '"}');
+        } else {
+          return;
+        }
+      });
     });
-    });
+
     this.router.navigate(['./pages/homePage']);
     return;
   }

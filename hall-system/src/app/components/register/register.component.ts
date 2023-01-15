@@ -15,8 +15,8 @@ export class RegisterComponent implements OnInit {
   registerForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       username: new FormControl(null, [Validators.required]),
-      firstname: new FormControl(null, [Validators.required]),
-      lastname: new FormControl(null, [Validators.required]),
+      // firstname: new FormControl(null, [Validators.required]),
+      // lastname: new FormControl(null, [Validators.required]),
       password: new FormControl(null, [Validators.required]),
       passwordConfirm: new FormControl(null, [Validators.required])
     },
@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
     if(data) {
-      let lecturer = new Lecturer(data.name, data.email, data.password);
+      let lecturer = new Lecturer(data.username, data.email, data.password);
       this.registrationService.addLecturer(lecturer);
       this.router.navigate(['login']);
     }

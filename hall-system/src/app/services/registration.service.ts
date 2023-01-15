@@ -7,7 +7,7 @@ import {ILecturerDetails} from "../interfaces/ILecturerDetails";
 })
 export class RegistrationService {
 
-  private addLecturersUrl: string = 'http://localhost:8080/lecturer/register';
+  private addLecturersUrl: string = 'http://localhost:8080/registration/lecturer/register';
 
   constructor(private http: HttpClient) {}
 

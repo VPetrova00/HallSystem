@@ -10,7 +10,7 @@ export class Lecturer implements ILecturerDetails {
   email: string = '';
   password: string = '';
 
-  constructor(name: string, password: string, email: string, id?: string) {
+  constructor(name: string, email: string, password: string, id?: string) {
     if (id) this.id = id;
     this.name = name;
     this.email = email;
