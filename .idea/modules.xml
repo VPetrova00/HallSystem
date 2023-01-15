@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/HallSystem.iml" filepath="$PROJECT_DIR$/.idea/HallSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hall-system-backend/hall-system-backend.iml" filepath="$PROJECT_DIR$/hall-system-backend/hall-system-backend.iml" />
     </modules>
   </component>
 </project>

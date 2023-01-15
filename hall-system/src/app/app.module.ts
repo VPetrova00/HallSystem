@@ -13,9 +13,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { HomePageComponent } from './components/pages/home-page/home-page.component';
 import { MyReservationsComponent } from './components/my-reservations/my-reservations.component';
-import { MatTableModule } from '@angular/material/table';
-import { AdditionalInfoComponent } from './components/additional-info/additional-info.component';
-import { HttpClientModule } from '@angular/common/http';
+import {MatTableModule} from '@angular/material/table'
+import {AdditionalInfoComponent} from "./components/additional-info/additional-info.component";
+import { HallReservationComponent } from './components/hall-reservation/hall-reservation.component';
+import {MatSelectModule} from "@angular/material/select";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -26,19 +28,21 @@ import { HttpClientModule } from '@angular/common/http';
     HomePageComponent,
     MyReservationsComponent,
     AdditionalInfoComponent,
+    HallReservationComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatCardModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatInputModule,
-    MatTableModule,
-    HttpClientModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MatCardModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatInputModule,
+        MatTableModule,
+        MatSelectModule,
+        HttpClientModule
+    ],
   providers: [],
   bootstrap: [AppComponent],
 })

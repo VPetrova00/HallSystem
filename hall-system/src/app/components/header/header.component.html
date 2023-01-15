@@ -3,7 +3,7 @@
   <div id="navigation">
     <ul>
       <li><a [routerLink]="['/pages/homePage']">Всички зали</a></li>
-      <li><a href="#">Резервирай зала</a></li>
+      <li><a [routerLink]="['/reservation']">Резервирай зала</a></li>
       <li>
         <a [routerLink]="['/pages/myReservations']" routerLinkActive="active"
           >Моите резервации</a
@@ -12,6 +12,6 @@
     </ul>
   </div>
   <div id="buttons">
-    <button (click)="logout()">Изход</button>
+    <button mat-button type="button" class="btn btn-light" (click)="logout()">Изход</button>
   </div>
 </div>

@@ -1,0 +1,115 @@
+<div class="layout-page">
+  <div class="row" *ngIf="freeStartingIntervals && freeStartingIntervals.length == 0">
+    <div class="col-2"></div>
+    <div class="col-10">
+      <p class="warning">Внимание! Тази зала е резервирана за целия ден!</p>
+    </div>
+  </div>
+  <div class="row" *ngIf="!canMakeReservation">
+    <div class="col-2"></div>
+    <div class="col-10">
+      <p class="warning">Не може да направите резервация без да сте избрали зала, дата или времеви интервал!</p>
+    </div>
+  </div>
+  <div class="row" *ngIf="(selectedStartingHour && selectedEndingHour) && selectedEndingHour <= selectedStartingHour">
+    <div class="col-2"></div>
+    <div class="col-10">
+      <p class="warning">Не може да изберете краен час, който е същия или по-ранен от този на започване!</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-10" *ngIf="isThereOtherReservation">
+      <p class="warning">Внимание! Зала {{selectedHall.hallNumber}} е резервирана
+        <span *ngFor="let hour of reservedHours">от {{hour}} часа до {{hour + 1}} часа
+          <span *ngIf="reservedHours.indexOf(hour) != reservedHours.length - 1">, </span>
+        </span>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-3">
+      <h4>Резервиране на зала:</h4>
+    </div>
+    <div class="col-5">
+      <mat-form-field appearance="outline">
+        <mat-label>Номер на зала</mat-label>
+        <mat-select [(ngModel)]="selectedHall" (ngModelChange)="getFreeIntervals()">
+          <mat-option *ngFor="let hall of halls" [value]="hall">
+            {{hall.hallNumber}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-3">
+      <p>Изберете дата:</p>
+    </div>
+    <div class="col-2">
+      <input id="chosenDate" matInput type="date" [(ngModel)]="selectedDate" (ngModelChange)="getFreeIntervals()">
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-3">
+      <p>Изберете времеви интервал за зала <span  *ngIf="selectedHall">{{selectedHall.hallNumber}}</span>:</p>
+    </div>
+    <div class="col-3">
+      <div class="row">
+        <div class="col-2">
+          <p>От:</p>
+        </div>
+        <div class="col-10">
+          <p *ngIf="selectedStartingHour"><strong>{{selectedStartingHour}} часа</strong></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="row">
+        <div class="col-2">
+          <p>До:</p>
+        </div>
+        <div class="col-10">
+          <p *ngIf="selectedEndingHour"><strong>{{selectedEndingHour}} часа</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5"></div>
+    <div class="col-3">
+      <mat-form-field appearance="outline">
+        <mat-label>час</mat-label>
+        <mat-select [(ngModel)]="selectedStartingHour">
+          <mat-option *ngFor="let hour of freeStartingIntervals" [value]="hour">
+            {{hour}} часа
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-2">
+      <mat-form-field appearance="outline">
+        <mat-label>час</mat-label>
+        <mat-select [(ngModel)]="selectedEndingHour">
+          <mat-option *ngFor="let hour of freeEndingIntervals" [value]="hour">
+            {{hour}} часа
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <br/>
+  <br/>
+<div class="row">
+  <div class="col-5"></div>
+  <div class="col-7">
+    <button mat-button type="button" class="btn btn-success" (click)="reserve()">Резервирай</button>
+  </div>
+</div>
+</div>
