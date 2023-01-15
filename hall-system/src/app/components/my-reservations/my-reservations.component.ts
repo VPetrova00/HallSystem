@@ -2,6 +2,7 @@ import { IHallInfo } from './../../interfaces/IHallInfo';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MyReservationsService } from 'src/app/services/my-reservations.service';
+import {ILecturerDetails} from "../../interfaces/ILecturerDetails";
 
 @Component({
   selector: 'app-my-reservations',
@@ -30,5 +31,17 @@ export class MyReservationsComponent implements OnInit {
     this.service.getReservations(storageData).subscribe((data) => {
       this.dataSource = data;
     });
+  }
+
+  deleteReservation(id: any, reservedHour: any, reservedDate: any): void {
+    let lecturerName = JSON.parse(
+      localStorage.getItem('lecturer') || '{}'
+    ).lecturer;
+
+    this.service.getLecturerByName(lecturerName).subscribe((lecturer) => {
+      this.service.deleteReservation(id, Number(lecturer.id), reservedHour, reservedDate);
+    });
+
+    location.reload();
   }
 }
