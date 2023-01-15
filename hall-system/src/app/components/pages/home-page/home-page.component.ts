@@ -18,8 +18,4 @@ export class HomePageComponent implements OnInit {
       this.hallInformation = data;
     });
   }
-
-  logout() {
-    this.router.navigate(['../']);
-  }
 }
