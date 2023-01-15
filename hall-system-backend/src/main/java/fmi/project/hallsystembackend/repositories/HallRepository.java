@@ -15,7 +15,7 @@ public interface HallRepository extends CrudRepository<Hall, Long> {
     Hall findHallById(Long id);
 
     @Query(
-            value = "SELECT DISTINCT halls.id, halls.capacity, halls.faculty_name, halls.hall_number, halls.has_projector, halls.is_computer_hall, reservation_data.reserved_date, reservation_data.reserved_hour FROM halls " +
+            value = "SELECT DISTINCT halls.id, halls.hall_number, halls.faculty_name, halls.capacity, halls.has_projector, halls.is_computer_hall, reservation_data.reserved_date, reservation_data.reserved_hour FROM halls " +
                     "INNER JOIN reservation_data ON halls.id = reservation_data.hall_id " +
                     "INNER JOIN lecturers ON reservation_data.lecturer_id = lecturers.id " +
                     "WHERE lecturers.name = :lecturer",
