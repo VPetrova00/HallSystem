@@ -28,6 +28,10 @@ export class HallReservationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (localStorage.length == 0) {
+      this.router.navigate(['/login']);
+    }
+
     this.setTomorrowDate();
   }
 
@@ -91,11 +95,12 @@ export class HallReservationComponent implements OnInit {
   reserve() {
     if (this.checkForReservationAbility() && !this.checkForOverlapping()) {
       for (var i=this.selectedStartingHour!;i<this.selectedEndingHour!;i++) {
-        this.lecturesService.reserveHall(1, this.selectedHall.id, i, this.convertDate(this.selectedDate)).subscribe(() => {
-          this.router.navigate(['pages/myReservations']);
-        })
+        this.lecturesService.reserveHall(Number(localStorage.getItem('id')), this.selectedHall.id, i, this.convertDate(this.selectedDate))
       }
+
+      this.router.navigate(['pages/myReservations']).then(() => {
+        window.location.reload();
+      });
     }
   }
-
 }

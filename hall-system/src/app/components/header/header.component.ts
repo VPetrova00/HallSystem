@@ -14,6 +14,10 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
+<<<<<<< Updated upstream
+    localStorage.clear();
+=======
+>>>>>>> Stashed changes
     this.router.navigate(['../']);
   }
 }

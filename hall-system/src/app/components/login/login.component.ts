@@ -26,16 +26,19 @@ export class LoginComponent implements OnInit {
     let lecturers: ILecturerDetails[];
     this.service.getAllLecturers().subscribe((data) => {
       lecturers = data;
-      lecturers.forEach(({email, password, name}) => {
+      lecturers.forEach(({email, password, name,id}) => {
         if (email == this.loginForm.controls['email'].value && password == this.loginForm.controls['password'].value) {
           localStorage.setItem('lecturer', '{"lecturer":"' + name + '"}');
+          localStorage.setItem('id', id);
         } else {
           return;
         }
       });
     });
 
-    this.router.navigate(['./pages/homePage']);
+    this.router.navigate(['./pages/homePage']).then(() => {
+      window.location.reload();
+    });
     return;
   }
 

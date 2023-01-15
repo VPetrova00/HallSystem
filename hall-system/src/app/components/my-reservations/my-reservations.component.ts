@@ -2,7 +2,11 @@ import { IHallInfo } from './../../interfaces/IHallInfo';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MyReservationsService } from 'src/app/services/my-reservations.service';
+<<<<<<< Updated upstream
 import { ILecturerDetails } from '../../interfaces/ILecturerDetails';
+=======
+import {ILecturerDetails} from "../../interfaces/ILecturerDetails";
+>>>>>>> Stashed changes
 
 @Component({
   selector: 'app-my-reservations',
@@ -34,19 +38,25 @@ export class MyReservationsComponent implements OnInit {
   }
 
   deleteReservation(id: any, reservedHour: any, reservedDate: any): void {
+<<<<<<< Updated upstream
+    this.service.deleteReservation(
+      id,
+      Number(localStorage.getItem('id')),
+      reservedHour,
+      reservedDate
+    );
+
+    window.location.reload();
+=======
     let lecturerName = JSON.parse(
       localStorage.getItem('lecturer') || '{}'
     ).lecturer;
 
     this.service.getLecturerByName(lecturerName).subscribe((lecturer) => {
-      this.service.deleteReservation(
-        id,
-        Number(lecturer.id),
-        reservedHour,
-        reservedDate
-      );
+      this.service.deleteReservation(id, Number(lecturer.id), reservedHour, reservedDate);
     });
 
     location.reload();
+>>>>>>> Stashed changes
   }
 }
