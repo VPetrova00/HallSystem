@@ -8,7 +8,7 @@ export class LecturerService {
   constructor(private httpClient: HttpClient) {}
 
   reserveHall(lecturerId: number, hallId: number, startingHour: number, reservedDate: string) {
-    return this.httpClient.post('http://localhost:8080/lecturers/' + lecturerId + '/reserve/' + hallId + '/' + startingHour + '?reservationDate=' + reservedDate, null).subscribe();
+    return this.httpClient.post('http://localhost:8080/lecturers/' + lecturerId + '/reserve/' + hallId + '/' + startingHour + '?reservationDate=' + reservedDate, null);
   }
 
 }
