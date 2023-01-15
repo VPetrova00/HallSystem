@@ -34,19 +34,13 @@ export class MyReservationsComponent implements OnInit {
   }
 
   deleteReservation(id: any, reservedHour: any, reservedDate: any): void {
-    let lecturerName = JSON.parse(
-      localStorage.getItem('lecturer') || '{}'
-    ).lecturer;
+    this.service.deleteReservation(
+      id,
+      Number(localStorage.getItem('id')),
+      reservedHour,
+      reservedDate
+    );
 
-    this.service.getLecturerByName(lecturerName).subscribe((lecturer) => {
-      this.service.deleteReservation(
-        id,
-        Number(lecturer.id),
-        reservedHour,
-        reservedDate
-      );
-    });
-
-    location.reload();
+    window.location.reload();
   }
 }
