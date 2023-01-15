@@ -11,4 +11,5 @@ public interface HallService {
     Hall findHallById(Long id);
     Set<Object[]> getReservedHalls(String name);
     Set<Integer> getFreeIntervals(Long id, LocalDate date);
+    Set<Integer> getReservedHours(Long id, LocalDate date);
 }

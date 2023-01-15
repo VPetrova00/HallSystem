@@ -48,6 +48,12 @@ public class HallController {
     public Set<Integer> getFreeIntervals(@PathVariable Long id, @RequestParam(name = "date") @DateTimeFormat(pattern = "dd.MM.yyyy") LocalDate date) {
         return this.hallService.getFreeIntervals(id, date);
     }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/reservedHours/hall/{id}")
+    public Set<Integer> getReservedHours(@PathVariable Long id, @RequestParam(name = "date") @DateTimeFormat(pattern = "dd.MM.yyyy") LocalDate date) {
+        return this.hallService.getReservedHours(id, date);
+    }
 }
 
 

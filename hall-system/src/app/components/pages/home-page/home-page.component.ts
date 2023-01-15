@@ -14,7 +14,7 @@ export class HomePageComponent implements OnInit {
   constructor(private router: Router, private service: HallsService) { }
 
   ngOnInit(): void {
-    this.service.getAllHals().subscribe((data) => {
+    this.service.getAllHalls().subscribe((data) => {
       this.hallInformation = data;
     });
   }

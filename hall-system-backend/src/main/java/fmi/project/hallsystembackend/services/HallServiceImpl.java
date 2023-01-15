@@ -43,12 +43,26 @@ public class HallServiceImpl implements HallService {
     @Override
     public Set<Integer> getFreeIntervals(Long id, LocalDate date) {
         Hall hall = this.findHallById(id);
-        Set<ReservationData> reservationData = hall.getReservationData().stream().filter(r -> r.getReservedDate() != date).collect(Collectors.toSet());
+        Set<ReservationData> reservationData = hall.getReservationData().stream().filter(r -> r.getReservedDate().equals(date)).collect(Collectors.toSet());
+        Set<Integer> tempIntervals = new HashSet<Integer>(this.intervals);
 
         for (ReservationData row : reservationData) {
-            intervals.remove(row.getReservedHour());
+            tempIntervals.remove(row.getReservedHour());
         }
 
-        return intervals;
+        return tempIntervals;
+    }
+
+    @Override
+    public Set<Integer> getReservedHours(Long id, LocalDate date) {
+        Hall hall = this.findHallById(id);
+        Set<ReservationData> reservationData = hall.getReservationData().stream().filter(r -> r.getReservedDate().equals(date)).collect(Collectors.toSet());
+        Set<Integer> reservedIntervals = new HashSet<Integer>();
+
+        for (ReservationData row : reservationData) {
+            reservedIntervals.add(row.getReservedHour());
+        }
+
+        return reservedIntervals;
     }
 }
