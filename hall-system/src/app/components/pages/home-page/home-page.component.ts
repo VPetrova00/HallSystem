@@ -14,10 +14,6 @@ export class HomePageComponent implements OnInit {
   constructor(private router: Router, private service: HallsService) { }
 
   ngOnInit(): void {
-    if (localStorage.length == 0) {
-      this.router.navigate(['/login']);
-    }
-
     this.service.getAllHalls().subscribe((data) => {
       this.hallInformation = data;
     });
